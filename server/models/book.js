@@ -38,8 +38,12 @@ const bookSchema=mongoose.Schema(
         
     },
     orderId:{
-        type:Number,
+        type:String,
       
+    },
+    ownerId:{
+        type:String,
+
     }
 },{timestamps:true})
 const Book=mongoose.model('Book',bookSchema)

@@ -1,3 +1,4 @@
+
 const express=require('express');
 const bodyParser=require('body-parser');
 const cookieParser=require('cookie-parser');
@@ -67,7 +68,7 @@ app.post('/api/login',(req,res)=>{
        if(!user)return res.json({isAuth:false, message:'email is not found'})
        //ComparePassword method in server.js that returns isMatch of true
       user.comparePassword(req.body.password,(err,isMatch)=>{
-          if(!isMatch)return res.json({isAuth:false,message:'Password is incorrct'})
+          if(!isMatch)return res.json({isAuth:false,message:'Password is incorrect'})
       })
 
       //pass the req.body.id data to the genarateToken method
@@ -97,7 +98,7 @@ app.get('/api/users',(req,res)=>{
 
 //Get the reviewers details
 app.get('/api/getReviewers',(req,res)=>{
-    const id= req.body.id
+    const id= req.query.id
     User.findById(id,(err,doc)=>{
         if(err) res.status(400)
         res.json({
